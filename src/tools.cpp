@@ -164,7 +164,8 @@ VectorXd Tools::cartesian2polar(const VectorXd& x_state) {
 	// Calculate Bearing
 	float bearing = 0.0;
 	// check for zero by zero and calculate tan inverse
-	if (fpclassify(px) != FP_ZERO && fpclassify(py) != FP_ZERO) {
+	if ((fabs(px) > 0.001) && (fabs(py) > 0.001))
+	{
 		bearing = atan2(py, px);
 	}
 
